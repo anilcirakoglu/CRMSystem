@@ -21,11 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EntityFramework\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CRMSystem.EntityLayer\CRMSystem.EntityLayer.csproj" />
   </ItemGroup>
 

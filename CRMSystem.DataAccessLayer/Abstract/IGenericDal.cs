@@ -11,7 +11,7 @@ namespace CRMSystem.DataAccessLayer.Abstract
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);
-        T Get(T entity);
+        T GetByID(int id);
         List<T> GetListAll();
     }
 }
