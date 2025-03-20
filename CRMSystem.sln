@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSystem.EntityLayer", "CR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSystem.DataAccessLayer", "CRMSystem.DataAccessLayer\CRMSystem.DataAccessLayer.csproj", "{0DEF8F2C-8CCD-4B5C-823E-F9457B5B9545}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSystemApi", "CRMSystemApi\CRMSystemApi.csproj", "{D59BFF93-9F87-4B1A-842C-DA10DC2211C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSystem.BusinessLayer", "BusinessLayer\CRMSystem.BusinessLayer.csproj", "{3A5FE33A-D151-4633-9633-C28117AA1B69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{0DEF8F2C-8CCD-4B5C-823E-F9457B5B9545}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DEF8F2C-8CCD-4B5C-823E-F9457B5B9545}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DEF8F2C-8CCD-4B5C-823E-F9457B5B9545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D59BFF93-9F87-4B1A-842C-DA10DC2211C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D59BFF93-9F87-4B1A-842C-DA10DC2211C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D59BFF93-9F87-4B1A-842C-DA10DC2211C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D59BFF93-9F87-4B1A-842C-DA10DC2211C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A5FE33A-D151-4633-9633-C28117AA1B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A5FE33A-D151-4633-9633-C28117AA1B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A5FE33A-D151-4633-9633-C28117AA1B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A5FE33A-D151-4633-9633-C28117AA1B69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
