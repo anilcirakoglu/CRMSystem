@@ -19,11 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLayer\CRMSystem.BusinessLayer.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\CRM.BusinessLayer\CRM.BusinessLayer.csproj" />
   </ItemGroup>
 
 </Project>
