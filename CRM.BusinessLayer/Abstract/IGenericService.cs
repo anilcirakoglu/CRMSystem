@@ -8,10 +8,10 @@ namespace CRM.BusinessLayer.Abstract
 {
     public interface IGenericService<T>where T : class
     {
-        void TAdd(T entity);
-        void TDelete(T entity);
-        void TUpdate(T entity);
-        T TGetByID(int id);
-        List<T> TGetListAll();
+        void Create(T entity);
+        void Delete(T entity);
+        void Update(T entity);
+        T? GetById(int id);
+        List<T> GetList();
     }
 }

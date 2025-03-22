@@ -18,27 +18,27 @@ namespace CRM.BusinessLayer.Concrete
             _userDal = userDal;
         }
 
-        public void TAdd(User entity)
+        public void Create(User entity)
         { 
             _userDal.Add(entity);
         }
 
-        public void TDelete(User entity)
+        public void Delete(User entity)
         {
             _userDal.Delete(entity);
         }
 
-        public User TGetByID(int id)
+        public User GetById(int id)
         {
-          return _userDal.GetByID(id);
+          return _userDal.GetById(id);
         }
 
-        public List<User> TGetListAll()
+        public List<User> GetList()
         {
             return _userDal.GetListAll();
         }
 
-        public void TUpdate(User entity)
+        public void Update(User entity)
         {
             _userDal.Update(entity);
         }

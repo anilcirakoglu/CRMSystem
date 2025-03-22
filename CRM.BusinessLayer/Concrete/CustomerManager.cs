@@ -1,5 +1,6 @@
 ﻿using CRM.BusinessLayer.Abstract;
 using CRMSystem.DataAccessLayer.Abstract;
+using CRMSystem.DtoLayer.CustomerDto;
 using CRMSystem.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,29 +19,34 @@ namespace CRM.BusinessLayer.Concrete
             _customerDal = customerDal;
         }
 
-        public void TAdd(Customer entity)
+        public void Create(Customer entity)
         {
-            _customerDal.Add(entity);
+           _customerDal.Add(entity);
         }
 
-        public void TDelete(Customer entity)
+        public void Delete(Customer entity)
         {
-            _customerDal.Delete(entity);
+           _customerDal.Delete(entity);
         }
 
-        public Customer TGetByID(int id)
+        public Customer? GetById(int id)
         {
-           return _customerDal.GetByID(id);
+            return _customerDal.GetById(id);
         }
 
-        public List<Customer> TGetListAll()
+        public List<Customer> GetList()
         {
             return _customerDal.GetListAll();
         }
 
-        public void TUpdate(Customer entity)
+        public bool IsExistsById(int id)
         {
-            _customerDal.Update(entity);
+           return _customerDal.IsExistsById(id);
+        }
+
+        public void Update(Customer entity)
+        {
+           _customerDal.Update(entity);
         }
     }
 }

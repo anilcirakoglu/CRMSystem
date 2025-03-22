@@ -1,4 +1,5 @@
-﻿using CRMSystem.EntityLayer.Entities;
+﻿using CRMSystem.DtoLayer.CustomerDto;
+using CRMSystem.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace CRM.BusinessLayer.Abstract
 {
     public interface ICustomerService:IGenericService<Customer>
     {
+        bool IsExistsById(int id);
     }
 }

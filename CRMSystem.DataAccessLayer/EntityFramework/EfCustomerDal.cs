@@ -15,5 +15,10 @@ namespace CRMSystem.DataAccessLayer.EntityFramework
         public EfCustomerDal(CRMSystemContext context) : base(context)
         {
         }
+
+        public bool IsExistsById(int id)
+        {
+          return _context.Set<Customer>().Any(x=>x.CustomerID == id);
+        }
     }
 }

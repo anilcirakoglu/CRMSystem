@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CRMSystem.DataAccessLayer\CRMSystem.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\CRMSystem.DtoLayer\CRMSystem.DtoLayer.csproj" />
   </ItemGroup>
 
 </Project>

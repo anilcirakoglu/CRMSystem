@@ -10,7 +10,7 @@ namespace CRMSystem.DataAccessLayer.Repositories
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        private readonly CRMSystemContext _context;
+        protected readonly CRMSystemContext _context;
 
         public GenericRepository(CRMSystemContext context)
         {
@@ -30,7 +30,7 @@ namespace CRMSystem.DataAccessLayer.Repositories
         }
 
 
-        public T GetByID(int id)
+        public T? GetById(int id)
         {
             return _context.Set<T>().Find(id);
         }

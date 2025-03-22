@@ -9,5 +9,6 @@ namespace CRMSystem.DataAccessLayer.Abstract
 {
     public interface ICustomerDal:IGenericDal<Customer>
     {
+        bool IsExistsById(int id);
     }
 }

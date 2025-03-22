@@ -2,12 +2,14 @@ using CRM.BusinessLayer.Container;
 using CRMSystem.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<CRMSystemContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
 builder.Services.ContainerDependencies();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddControllers();
 
