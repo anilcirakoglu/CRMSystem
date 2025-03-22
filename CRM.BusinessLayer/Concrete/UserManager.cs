@@ -18,6 +18,11 @@ namespace CRM.BusinessLayer.Concrete
             _userDal = userDal;
         }
 
+        public bool CheckUsernameAndPassword(string username, string password)
+        {
+          return _userDal.CheckUsernameAndPassword(username, password);
+        }
+
         public void Create(User entity)
         { 
             _userDal.Add(entity);
@@ -28,7 +33,7 @@ namespace CRM.BusinessLayer.Concrete
             _userDal.Delete(entity);
         }
 
-        public User GetById(int id)
+        public User? GetById(int id)
         {
           return _userDal.GetById(id);
         }

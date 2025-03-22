@@ -15,5 +15,10 @@ namespace CRMSystem.DataAccessLayer.EntityFramework
         public EfUserDal(CRMSystemContext context) : base(context)
         {
         }
+
+        public bool CheckUsernameAndPassword(string username, string password)
+        {
+            return _context.Set<User>().Any(x=>x.Username == username && x.Password == password);
+        }
     }
 }

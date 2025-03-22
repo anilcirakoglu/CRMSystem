@@ -9,5 +9,6 @@ namespace CRMSystem.DataAccessLayer.Abstract
 {
     public interface IUserDal:IGenericDal<User>
     {
+        bool CheckUsernameAndPassword(string username, string password);
     }
 }

@@ -9,5 +9,6 @@ namespace CRM.BusinessLayer.Abstract
 {
     public interface IUserService:IGenericService<User>
     {
+        bool CheckUsernameAndPassword(string username, string password);
     }
 }
