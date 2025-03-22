@@ -34,7 +34,7 @@ namespace CRMSystem.DataAccessLayer.Repositories
         {
             return _context.Set<T>().Find(id);
         }
-
+        
         public List<T> GetListAll()
         {
            return _context.Set<T>().ToList();
