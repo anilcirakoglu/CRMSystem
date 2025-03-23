@@ -16,7 +16,7 @@ namespace CRMSystemApi.Controllers
             _userService = userService;
         }
 
-        [HttpPost]
+        [HttpPost("Login")]
         public IActionResult Login(LoginDto loginDto) 
         {
            var isValid= _userService.CheckUsernameAndPassword(loginDto.Username,loginDto.Password);
