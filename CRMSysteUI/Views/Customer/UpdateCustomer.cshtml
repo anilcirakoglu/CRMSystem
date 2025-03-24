@@ -1,0 +1,57 @@
+﻿@model CustomerDto
+@{
+	ViewData["Title"] = "Customer Management";
+}
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Müşteri işlemleri</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<form method="post">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title"> Müşteri Güncelleme</div>
+						</div>
+						<input type="hidden" asp-for="CustomerID" />
+						<div class="card-body">
+							<div class="form-group">
+								<label for="FirstName">Adınızı giriniz</label>
+								<input type="text" class="form-control" asp-for="FirstName" id="FirstName">
+							</div>
+						</div>
+
+						<div class="card-body">
+							<div class="form-group">
+								<label for="LastName">Soyadınızı Giriniz</label>
+								<input type="text" class="form-control" asp-for="LastName" id="LastName">
+
+							</div>
+
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="Email">Email giriniz</label>
+								<input type="email" class="form-control" asp-for="Email" id="Email">
+
+							</div>
+
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="Region">Bölgenizi giriniz</label>
+								<input type="text" class="form-control" asp-for="Region" id="Region">
+
+							</div>
+
+						</div>
+						<div class="card-action d-flex justify-content-center ">
+							<button class="btn btn-primary">Güncelle</button>
+
+						</div><br />
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>

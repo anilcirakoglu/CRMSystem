@@ -1,8 +1,8 @@
-using CRMSysteUI.Models;
+using CRMSystemUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CRMSysteUI.Controllers
+namespace CRMSystemUI.Controllers
 {
     public class HomeController : Controller
     {

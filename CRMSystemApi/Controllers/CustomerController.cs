@@ -81,7 +81,7 @@ namespace CRMSystemApi.Controllers
             }
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteCustomer(int id)
         {
             try

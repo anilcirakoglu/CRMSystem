@@ -1,9 +1,9 @@
-﻿using CRMSysteUI.Models;
+﻿using CRMSystemUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace CRMSysteUI.Controllers
+namespace CRMSystemUI.Controllers
 {
     public class LoginController : Controller
     {
@@ -19,15 +19,15 @@ namespace CRMSysteUI.Controllers
             return View();
         }
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(LoginDto loginDto) 
+        public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
-                var client = this._httpClientFactory.CreateClient();
-                var content = new StringContent(JsonConvert.SerializeObject(loginDto), Encoding.UTF8,"application/json");
+                var client = _httpClientFactory.CreateClient();
+                var content = new StringContent(JsonConvert.SerializeObject(loginDto), Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("http://localhost:5068/api/Authentication/Login", content);
 
-                if (response.IsSuccessStatusCode) 
+                if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index", "Customer");
                 }

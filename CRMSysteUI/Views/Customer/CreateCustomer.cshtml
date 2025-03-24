@@ -1,0 +1,64 @@
+﻿﻿
+@model CustomerDto
+@{
+	ViewData["Title"] = "Customer Management";
+}
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-7">
+				<form method="post">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title"> Yeni Müşteri Ekle</div>
+						</div>
+						
+						<div class="card-body">
+							<div class="form-group">
+								<label for="firstname">Adınızı giriniz</label>
+								<input type="text" class="form-control" asp-for="FirstName" id="firstname">
+							</div>
+						</div>
+
+						<div class="card-body">
+							<div class="form-group">
+								<label for="lastname">Soyadınızı Giriniz</label>
+								<input type="text" class="form-control" asp-for="LastName" id="lastname">
+
+							</div>
+
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="email">Email giriniz</label>
+								<input type="email" class="form-control" asp-for="Email" id="email">
+
+							</div>
+
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="region">Bölgenizi giriniz</label>
+								<input type="text" class="form-control" asp-for="Region" id="region">
+
+							</div>
+						</div>
+						@* <div class="card-body">
+							<div class="form-group">
+								<label for="registrationdate">Tarih</label>
+								<input type="date" class="form-control" asp-for="RegistrationDate" id="registrationdate">
+
+							</div>
+						</div>  *@
+
+						<div class="card-action d-flex justify-content-center ">
+							<button class="btn btn-primary">Yeni Kayıt</button>
+							
+						</div><br />
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>

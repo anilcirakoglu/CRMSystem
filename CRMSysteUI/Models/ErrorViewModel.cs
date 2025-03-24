@@ -1,4 +1,4 @@
-namespace CRMSysteUI.Models
+namespace CRMSystemUI.Models
 {
     public class ErrorViewModel
     {

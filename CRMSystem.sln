@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.BusinessLayer", "CRM.Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSystem.DtoLayer", "CRMSystem.DtoLayer\CRMSystem.DtoLayer.csproj", "{39ED1D5D-BBBD-47DA-85C3-CDC2B9A4C2A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSysteUI", "CRMSysteUI\CRMSysteUI.csproj", "{5FD0732D-12BF-4F98-A534-E797661565BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSystemUI", "CRMSysteUI\CRMSystemUI.csproj", "{5FD0732D-12BF-4F98-A534-E797661565BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

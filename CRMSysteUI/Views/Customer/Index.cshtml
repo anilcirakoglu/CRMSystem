@@ -42,12 +42,13 @@
                     <td>@customer.Email</td>
                     <td>@customer.Region</td>
                     <td>@customer.RegistrationDate</td>
-                    <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
-                    <td><a href="#" class="btn btn-outline-success">Güncelle</a></td>
+                    <td><a href="/Customer/DeleteCustomer/@customer.CustomerID" class="btn btn-outline-danger">Sil</a></td>
+                    <td><a href="/Customer/UpdateCustomer/@customer.CustomerID" class="btn btn-outline-success">Güncelle</a></td>
                 </tr>
             }
         </tbody>
     </table>
+    <a href="Customer/CreateCustomer" class="btn btn-outline-primary">Yeni Müşteri Girişi</a>
 </div>
 
 
