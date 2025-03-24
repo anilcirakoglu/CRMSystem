@@ -1,6 +1,10 @@
 ﻿using CRMSystemUI.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace CRMSystemUI.Controllers
@@ -18,6 +22,10 @@ namespace CRMSystemUI.Controllers
         {
             return View();
         }
+        public IActionResult Login()
+        {
+            return View();
+        }
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
@@ -29,16 +37,39 @@ namespace CRMSystemUI.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index", "Customer");
+                    var data = await response.Content.ReadAsStringAsync();
+                    if (data != null)
+                    {
+                        JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+                        var token = handler.ReadJwtToken(data);
+
+                        var claims = token.Claims.ToList();
+                        if (data != null)
+                            claims.Add(new Claim("accesToken", data));
+
+                        var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
+
+                        await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                        }
+
+                        return RedirectToAction("Index", "Customer");
                 }
                 else
                 {
                     return RedirectToAction("Index", "Login");
                 }
-
             }
-            return View();
-
+          return RedirectToAction("Index", "Login");
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Login");
+        }
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View(); 
         }
     }
 }

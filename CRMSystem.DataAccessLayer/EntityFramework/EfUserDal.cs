@@ -16,9 +16,9 @@ namespace CRMSystem.DataAccessLayer.EntityFramework
         {
         }
 
-        public bool CheckUsernameAndPassword(string username, string password)
+        public User? GetByUsernameAndPassword(string username, string password)
         {
-            return _context.Set<User>().Any(x=>x.Username == username && x.Password == password);
+            return _context.Set<User>().FirstOrDefault(x=>x.Username == username && x.Password == password);
         }
     }
 }

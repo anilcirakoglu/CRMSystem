@@ -18,9 +18,9 @@ namespace CRM.BusinessLayer.Concrete
             _userDal = userDal;
         }
 
-        public bool CheckUsernameAndPassword(string username, string password)
+        public User? GetByUsernameAndPassword(string username, string password)
         {
-          return _userDal.CheckUsernameAndPassword(username, password);
+          return _userDal.GetByUsernameAndPassword(username, password);
         }
 
         public void Create(User entity)

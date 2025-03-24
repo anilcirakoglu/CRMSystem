@@ -1,4 +1,5 @@
 ﻿using CRMSystemUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -25,9 +26,14 @@ namespace CRMSystemUI.Controllers
             }
             return View();
         }
+        [Authorize(Policy = "ManagerPolicy")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accesToken")?.Value;
+
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             var responseMessage = await client.DeleteAsync($"http://localhost:5068/api/Customer/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
