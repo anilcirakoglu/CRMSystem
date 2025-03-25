@@ -20,5 +20,22 @@ namespace CRMSystem.DataAccessLayer.EntityFramework
         {
           return _context.Set<Customer>().Any(x=>x.CustomerID == id);
         }
+
+        public List<Customer> SearchCustomer(string customer)
+        {
+            return _context.Set<Customer>()
+                     .Where(x => x.FirstName.ToLower().Contains(customer.ToLower())
+                              || x.LastName.ToLower().Contains(customer.ToLower())
+                              || x.Region.ToLower().Contains(customer.ToLower())
+                              ||x.FirstName.StartsWith(customer)
+                              ||x.LastName.StartsWith(customer)
+                              ||x.Region.StartsWith(customer))
+                     .ToList();
+        }
+
+        public List<Customer> SearchCustomerByRegion(string region)
+        {
+           return _context.Set<Customer>().Where(x=>x.Region==region).ToList();
+        }
     }
 }

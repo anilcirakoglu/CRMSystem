@@ -44,6 +44,16 @@ namespace CRM.BusinessLayer.Concrete
            return _customerDal.IsExistsById(id);
         }
 
+        public List<Customer> SearchCustomer(string customer)
+        {
+            return _customerDal.SearchCustomer(customer);
+        }
+
+        public List<Customer> SearchCustomerByRegion(string region)
+        {
+           return _customerDal.SearchCustomerByRegion(region);
+        }
+
         public void Update(Customer entity)
         {
            _customerDal.Update(entity);

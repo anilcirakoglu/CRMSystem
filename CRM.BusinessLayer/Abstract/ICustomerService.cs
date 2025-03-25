@@ -11,5 +11,7 @@ namespace CRM.BusinessLayer.Abstract
     public interface ICustomerService:IGenericService<Customer>
     {
         bool IsExistsById(int id);
+        List<Customer> SearchCustomer(string customer);
+        List<Customer> SearchCustomerByRegion(string region);
     }
 }

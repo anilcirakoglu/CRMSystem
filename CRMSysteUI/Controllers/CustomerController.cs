@@ -1,7 +1,9 @@
 ﻿using CRMSystemUI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Text;
 
 namespace CRMSystemUI.Controllers
@@ -84,7 +86,51 @@ namespace CRMSystemUI.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Search(string name)
+        {
+            List<CustomerDto> customers = new List<CustomerDto>();
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accesToken")?.Value;
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"http://localhost:5068/api/Customer/Search/{name}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                customers = JsonConvert.DeserializeObject<List<CustomerDto>>(content);
 
 
+                return View(customers);
+
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> SearchRegion(string region)
+        {
+            List<CustomerDto> customers = new List<CustomerDto>();
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accesToken")?.Value;
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"http://localhost:5068/api/Customer/SearchCustomerByRegion?region={region}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                customers = JsonConvert.DeserializeObject<List<CustomerDto>>(content);
+
+
+                return View(customers);
+
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

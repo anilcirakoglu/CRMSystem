@@ -28,7 +28,7 @@ namespace CRMSystemApi.Controllers
         {
             try
             {
-               
+
                 var values = _customerService.GetList();
                 _logger.LogInformation("Create Customer - Params:{0}", JsonSerializer.Serialize(values));
                 return Ok(values);
@@ -39,7 +39,7 @@ namespace CRMSystemApi.Controllers
                 return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
             }
         }
-        
+
         [HttpPost]
         public IActionResult CreateCustomer(CreateCustomerDto createCustomerDto)
         {
@@ -118,15 +118,51 @@ namespace CRMSystemApi.Controllers
                 _logger.LogInformation("Müşteri güncellendi Params:{ 0}", JsonSerializer.Serialize(updateCustomerDto));
                 return Ok(customer);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _logger.LogError(ex, "Bir hata meydana geldi");
                 return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
             }
-
-
+        }
+        [HttpGet("Search/{name}")]
+        public async Task<IActionResult> Search(string name)
+        {
+            try
+            {
+                var customer = _customerService.SearchCustomer(name);
+                if (customer != null)
+                {
+                    var result = _mapper.Map<List<GetCustomerDto>>(customer);
+                    return Ok(result);
+                }
+                _logger.LogWarning("Müşteri bulunamadı");
+                return NotFound("Müşteri bulunamadı");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
+            }
+        }
+        [HttpGet("SearchCustomerByRegion")]
+        public async Task<IActionResult> SearchCustomerByRegion([FromQuery] string region)
+        {
+            try
+            {
+                var customer = _customerService.SearchCustomerByRegion(region);
+                if (customer != null)
+                {
+                    var result = _mapper.Map<List<GetCustomerDto>>(customer);
+                    _logger.LogInformation($"Region Param: {region}");
+                    return Ok(result);
+                }
+                _logger.LogWarning("Müşteri bulunamadı");
+                return NotFound("Müşteri bulunamadı");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Bir hata oluştu.");
+            }
 
         }
-
     }
 }

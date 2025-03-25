@@ -10,5 +10,7 @@ namespace CRMSystem.DataAccessLayer.Abstract
     public interface ICustomerDal:IGenericDal<Customer>
     {
         bool IsExistsById(int id);
+       List<Customer> SearchCustomer(string customer);
+       List<Customer> SearchCustomerByRegion(string region);
     }
 }
