@@ -11,7 +11,7 @@ namespace CRMSystemApi.Mapping
             CreateMap<Customer,CreateCustomerDto>().ReverseMap();
             CreateMap<Customer,ResultCustomerDto>().ReverseMap();
             CreateMap<Customer,GetCustomerDto>().ReverseMap();
-            CreateMap<Customer,UpdateCustomerDto>().ReverseMap();
+            CreateMap<Customer,UpdateCustomerDto>().ReverseMap();    
         }
     }
 }

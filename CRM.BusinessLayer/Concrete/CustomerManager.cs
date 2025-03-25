@@ -56,7 +56,19 @@ namespace CRM.BusinessLayer.Concrete
 
         public void Update(Customer entity)
         {
-           _customerDal.Update(entity);
+            if (entity != null)
+            {
+                var customerToUpdate = _customerDal.GetById(entity.CustomerID);
+                if (customerToUpdate != null)
+                {
+                    customerToUpdate.FirstName = entity.FirstName;
+                    customerToUpdate.LastName = entity.LastName;
+                    customerToUpdate.Email = entity.Email;
+                    customerToUpdate.Region = entity.Region;
+
+                    _customerDal.Update(customerToUpdate);
+                }
+            }
         }
     }
 }

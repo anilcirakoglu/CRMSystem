@@ -11,24 +11,24 @@ namespace CRMSystemUI.Controllers
     public class CustomerController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
+       
         public CustomerController(IHttpClientFactory httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
+            _httpClientFactory = httpClientFactory;       
         }
         public async Task<IActionResult> Index()
-        {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("http://localhost:5068/api/Customer/CustomerList");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<CustomerDto>>(jsonData);
-                return View(values);
-            }
-            return View();
+        {        
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("http://localhost:5068/api/Customer/CustomerList");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<CustomerDto>>(jsonData);
+                    return View(values);
+                }
+                return View();
         }
-        [Authorize(Policy = "ManagerPolicy")]
+        [Authorize(Policy = "ManagerPolicy")]//It was used for testing
         public async Task<IActionResult> DeleteCustomer(int id)
         {
             var token = User.Claims.FirstOrDefault(x => x.Type == "accesToken")?.Value;
@@ -51,16 +51,16 @@ namespace CRMSystemUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<CustomerDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateCustomerDto>(jsonData);
                 return View(values);
             }
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateCustomer(CustomerDto customerDto)
+        public async Task<IActionResult> UpdateCustomer(UpdateCustomerDto updateCustomerDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(customerDto);
+            var jsonData = JsonConvert.SerializeObject(updateCustomerDto);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PutAsync("http://localhost:5068/api/Customer/", content);
             if (responseMessage.IsSuccessStatusCode)

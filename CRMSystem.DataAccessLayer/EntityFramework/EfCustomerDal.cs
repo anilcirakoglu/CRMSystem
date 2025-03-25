@@ -29,13 +29,14 @@ namespace CRMSystem.DataAccessLayer.EntityFramework
                               || x.Region.ToLower().Contains(customer.ToLower())
                               ||x.FirstName.StartsWith(customer)
                               ||x.LastName.StartsWith(customer)
-                              ||x.Region.StartsWith(customer))
-                     .ToList();
+                              ||x.Region.StartsWith(customer)).OrderBy(c => c.CustomerID) 
+                        .ToList(); 
         }
 
         public List<Customer> SearchCustomerByRegion(string region)
         {
-           return _context.Set<Customer>().Where(x=>x.Region==region).ToList();
+           return _context.Set<Customer>().Where(x=>x.Region==region).OrderBy(c => c.CustomerID)
+                        .ToList();
         }
     }
 }

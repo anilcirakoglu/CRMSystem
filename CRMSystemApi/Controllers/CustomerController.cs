@@ -35,8 +35,8 @@ namespace CRMSystemApi.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Bir hata meydana geldi");
-                return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
+                _logger.LogError(ex, "An unexpected error occurred.");
+                return StatusCode(500, "An unexpected error occurred.");
             }
         }
 
@@ -52,8 +52,8 @@ namespace CRMSystemApi.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Bir hata meydana geldi");
-                return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
+                _logger.LogError(ex, "An unexpected error occurred.");
+                return StatusCode(500, "An unexpected error occurred.");
             }
 
 
@@ -76,8 +76,8 @@ namespace CRMSystemApi.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Bir hata meydana geldi");
-                return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
+                _logger.LogError(ex, "An unexpected error occurred.");
+                return StatusCode(500, "An unexpected error occurred.");
             }
 
         }
@@ -98,8 +98,8 @@ namespace CRMSystemApi.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Bir hata meydana geldi");
-                return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
+                _logger.LogError(ex, "An unexpected error occurred.");
+                return StatusCode(500, "An unexpected error occurred.");
             }
         }
         [HttpPut]
@@ -114,14 +114,18 @@ namespace CRMSystemApi.Controllers
                     return NotFound("Müşteri mevcut değil");
                 }
                 var customer = _mapper.Map<Customer>(updateCustomerDto);
+
+                var existingCustomer = _customerService.GetById(updateCustomerDto.CustomerID);
+                customer.RegistrationDate = existingCustomer.RegistrationDate;
+
                 _customerService.Update(customer);
                 _logger.LogInformation("Müşteri güncellendi Params:{ 0}", JsonSerializer.Serialize(updateCustomerDto));
-                return Ok(customer);
+                return Ok(updateCustomerDto);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Bir hata meydana geldi");
-                return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
+                _logger.LogError(ex, "An unexpected error occurred.");
+                return StatusCode(500, "An unexpected error occurred.");
             }
         }
         [HttpGet("Search/{name}")]
@@ -140,7 +144,8 @@ namespace CRMSystemApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Bir hata oluştu daha sonra tekrar deneyin");
+                _logger.LogError(ex, "An unexpected error occurred.");
+                return StatusCode(500, "An unexpected error occurred.");
             }
         }
         [HttpGet("SearchCustomerByRegion")]
@@ -160,7 +165,8 @@ namespace CRMSystemApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Bir hata oluştu.");
+                _logger.LogError(ex, "An unexpected error occurred.");
+                return StatusCode(500, "An unexpected error occurred.");
             }
 
         }
