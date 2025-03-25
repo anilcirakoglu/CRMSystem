@@ -17,19 +17,19 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card shadow-lg p-4">
-                    <h2 class="text-center mb-4">Login</h2>
+                    <h2 class="text-center mb-4">Login CRM System</h2>
                     <form asp-action="Login" asp-controller="Login" method="post">
                         <div class="mb-3">
-                            <label asp-for="@Model.Username" class="form-label">Username</label>
-                            <input asp-for="@Model.Username" class="form-control" placeholder="Enter your username">
+                            <label asp-for="Username" class="form-label">Username</label>
+                            <input asp-for="Username" class="form-control" placeholder="Enter your username">
                             <span class="text-danger" asp-validation-for="@Model.Username" ></span>
 
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="@Model.Password" class="form-label">Password</label>
-                            <input asp-for="@Model.Password" type="password" class="form-control" placeholder="Enter your password">
-                            <span class="text-danger" asp-validation-for="@Model.Password" ></span>
+                            <label asp-for="Password" class="form-label">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password">
+                            <span class="text-danger" asp-validation-for="Password" ></span>
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary w-50">Login</button>  

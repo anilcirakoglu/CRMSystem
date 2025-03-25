@@ -2,7 +2,7 @@
 
 namespace CRMSystemUI.Models
 {
-    public class UpdateCustomerDto
+    public class CreateCustomerDto
     {
         public int CustomerID { get; set; }
         [Required(ErrorMessage = "The Firstname field is required")]
@@ -13,7 +13,6 @@ namespace CRMSystemUI.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "The Region field is required")]
         public string Region { get; set; }
-
-        public DateTime RegistrationDate { get; set; }
+        public DateTime RegistrationDate { get; set; } = DateTime.Now.ToUniversalTime();
     }
 }

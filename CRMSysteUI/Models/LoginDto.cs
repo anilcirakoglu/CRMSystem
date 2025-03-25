@@ -4,9 +4,9 @@ namespace CRMSystemUI.Models
 {
     public class LoginDto
     {
-        [Required(ErrorMessage = "Kullanıcı adı alanı zorunludur.")]
+        [Required(ErrorMessage = "The Username field is required")]
         public string Username { get; set; }
-        [Required(ErrorMessage = "Şifre alanı zorunludur.")]
+        [Required(ErrorMessage = "The Password field is required")]
         public string Password { get; set; }
     }
 }
